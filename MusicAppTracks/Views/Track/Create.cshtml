@@ -1,0 +1,42 @@
+﻿@model MusicAppTracks.Models.TrackViewModel
+
+@{
+    ViewData["Title"] = "Добавить трек";
+}
+
+<h2>Добавить трек</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title">Название</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Artist">Исполнитель</label>
+        <input asp-for="Artist" class="form-control" />
+        <span asp-validation-for="Artist" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Album">Альбом</label>
+        <input asp-for="Album" class="form-control" />
+        <span asp-validation-for="Album" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TrackFile">Аудио (MP3)</label>
+        <input asp-for="TrackFile" type="file" class="form-control" />
+        <span asp-validation-for="TrackFile" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CoverFile">Обложка (JPEG)</label>
+        <input asp-for="CoverFile" type="file" class="form-control" />
+        <span asp-validation-for="CoverFile" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

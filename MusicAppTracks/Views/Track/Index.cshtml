@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MusicAppTracks.Models.Track>
+
+@{
+    ViewData["Title"] = "Список треков";
+}
+
+<h2>Список треков</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить новый трек</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Исполнитель</th>
+            <th>Альбом</th> 
+            <th>Обложка</th>
+            <th>Аудио</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var track in Model)
+        {
+            <tr>
+                <td>@track.Title</td>
+                <td>@track.Artist</td>
+                <td>@track.Album</td>
+                <td>
+                    <img src="@track.CoverUrl" alt="Cover" style="max-width:100px;" />
+                </td>
+                <td>
+                    <audio controls>
+                        <source src="@track.TrackUrl" type="audio/mpeg" />
+                        Ваш браузер не поддерживает аудио-тег.
+                    </audio>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
